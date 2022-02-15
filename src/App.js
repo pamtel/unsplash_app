@@ -36,7 +36,7 @@ const App = () => {
 
   useEffect(() => {
     apiDoc();
-  }, []);
+  });
 
   const handleChange = (event) => {
     setImage(event.target.value);
