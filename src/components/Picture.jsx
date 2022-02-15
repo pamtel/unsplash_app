@@ -17,7 +17,7 @@ const Card = styled.div`
 
 const Picture = ({ image }) => {
   const [open, setOpen] = useState(false);
-
+  const handleClose = () => setOpen(false);
   return (
     <Card key={image.id} onClick={() => setOpen(true)}>
       <img src={image.urls.thumb} alt="pics" />
@@ -25,7 +25,7 @@ const Picture = ({ image }) => {
         <p className="card-username">{image.user.name}</p>
         <p className="card-location">{image.user.location}</p>
       </div>
-      <Modal open={open} setOpen={setOpen} image={image} />
+      <Modal open={open} handleClose={handleClose} image={image} />
     </Card>
   );
 };

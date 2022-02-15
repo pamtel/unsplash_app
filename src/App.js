@@ -1,5 +1,4 @@
-// eslint-disable-line react-hooks/exhaustive-deps
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import debounce from "lodash.debounce";
 import "./App.scss";
 import axios from "axios";
@@ -26,17 +25,22 @@ const App = () => {
     });
   };
 
-  const apiDoc = () => {
+  const FetchPhotos= useCallback(() => {
+    const clientId = process.env.REACT_APP_ACCESS_KEY;
     setIsLoading(true);
     const url = `https://api.unsplash.com/photos/?client_id=${clientId}&&limit=50`;
     axios.get(url).then((response) => {
       setResult(response?.data);
       setIsLoading(false);
     });
-  };
-  useEffect(() => {
-    apiDoc();
-  }, []);
+    }, [])
+    useEffect(() => {
+      FetchPhotos()
+    }, [FetchPhotos])
+  
+  // useEffect(() => {
+  //   apiDoc();
+  // }, []);
 
   const handleChange = (event) => {
     setImage(event.target.value);
