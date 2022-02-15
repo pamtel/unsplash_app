@@ -27,6 +27,7 @@ const App = () => {
 
   const FetchPhotos= useCallback(() => {
     const clientId = process.env.REACT_APP_ACCESS_KEY;
+    console.log('clientId', clientId)
     setIsLoading(true);
     const url = `https://api.unsplash.com/photos/?client_id=${clientId}&&limit=50`;
     axios.get(url).then((response) => {
@@ -37,10 +38,6 @@ const App = () => {
     useEffect(() => {
       FetchPhotos()
     }, [FetchPhotos])
-  
-  // useEffect(() => {
-  //   apiDoc();
-  // }, []);
 
   const handleChange = (event) => {
     setImage(event.target.value);
