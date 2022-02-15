@@ -31,8 +31,7 @@ const style = {
   pb: 3,
 };
 
-export default function ModalUnstyledDemo({ open, setOpen, image }) {
-  const handleClose = () => setOpen(false);
+export default function ModalUnstyledDemo({ open, handleClose, image }) {
   return (
     <div>
       <StyledModal

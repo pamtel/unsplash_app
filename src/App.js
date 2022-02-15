@@ -1,3 +1,4 @@
+// eslint-disable-line react-hooks/exhaustive-deps
 import React, { useState, useEffect } from "react";
 import debounce from "lodash.debounce";
 import "./App.scss";
@@ -33,10 +34,9 @@ const App = () => {
       setIsLoading(false);
     });
   };
-
   useEffect(() => {
     apiDoc();
-  });
+  }, []);
 
   const handleChange = (event) => {
     setImage(event.target.value);
@@ -53,11 +53,13 @@ const App = () => {
         </p>
       </div>
       <div className="result">
-          <PictureList pictures={result} />
+        <PictureList pictures={result} />
         {Array(6)
           .fill({})
           .map((_, idx) => (
-            <div key={idx} className='loader'>{isLoading && <Loader />}</div>
+            <div key={idx} className="loader">
+              {isLoading && <Loader />}
+            </div>
           ))}
       </div>
     </div>
