@@ -33,9 +33,8 @@ const style = {
 
 export default function ModalUnstyledDemo({ open, setOpen, image }) {
   const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
   return (
-    <div onClick={handleOpen}>
+    <div>
       <StyledModal
         aria-labelledby="unstyled-modal-title"
         aria-describedby="unstyled-modal-description"

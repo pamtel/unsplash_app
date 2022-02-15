@@ -9,7 +9,6 @@ import PictureList from "./components/PictureList";
 const App = () => {
   const clientId = process.env.REACT_APP_ACCESS_KEY;
   const [image, setImage] = useState("");
-  const [searchImage, setSearchImage] = useState(false);
   const [result, setResult] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,7 +21,6 @@ const App = () => {
       clientId;
     axios.get(url).then((response) => {
       setResult(response.data.results);
-      setSearchImage(true);
       setIsLoading(false);
     });
   };
